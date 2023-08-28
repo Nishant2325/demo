@@ -1,0 +1,91 @@
+package demo;
+
+public class Demo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try {
+			Student s1 = new Student("dipak",5000);
+			System.out.println(s1);
+			
+		}
+		catch(SalaryNotNegativeException e) {
+			e.printStackTrace();
+		}
+		catch(ProdNameException e) {
+			System.err.println("Product name should be more than 5 char");
+		}
+	}
+
+}
+----------------------------------------------------------------------
+
+package demo;
+
+public class Student {
+	private String pname;
+	private double salary;
+	
+	public Student() {
+		
+	}
+
+	public Student(String pname, double salary) throws SalaryNotNegativeException{
+		super();
+		this.pname = pname;
+		
+		if(salary>0)
+			this.salary = salary;
+		else
+			throw new SalaryNotNegativeException("Salary should not be negative");
+	}
+
+	public String getPname() {
+		return pname;
+	}
+
+	public void setPname(String pname) {
+		this.pname = pname;
+	}
+
+	public double getSalary() {
+		return salary;
+	}
+
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+	
+	
+	
+}
+---------------------------------------------------------------------
+
+
+package demo;
+
+public class ProdNameException extends RuntimeException{
+
+}
+---------------------------------------------------------
+
+package demo;
+
+public class SalaryNotNegativeException extends Exception{
+
+	public SalaryNotNegativeException() {
+		
+	}
+	
+public SalaryNotNegativeException(String Message) {
+		super(Message);
+	}
+}
+
+
+
+
+
+
+
+
